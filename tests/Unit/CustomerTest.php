@@ -46,6 +46,7 @@ class CustomerTest extends TestCase
         $user = new User;
 
         $this->assertFalse($user->hasDefaultPaymentMethod());
+        $this->assertFalse($user->hasValidDefaultPaymentMethod());
     }
 
     public function test_default_payment_method_returns_null_when_the_user_is_not_a_customer_yet()

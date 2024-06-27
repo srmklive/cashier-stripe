@@ -50,6 +50,23 @@ trait ManagesPaymentMethods
     }
 
     /**
+     * Determines if the customer currently has a valid default payment method.
+     *
+     * @return bool
+     */
+    public function hasValidDefaultPaymentMethod()
+    {
+        $paymentMethod = $this->defaultPaymentMethod();
+
+        // Return false if the payment method is null
+        if ($paymentMethod === null) {
+            return false;
+        }
+
+        return $this->resolveStripePaymentMethod($paymentMethod->id) === null;
+    }
+
+    /**
      * Determines if the customer currently has at least one payment method of an optional type.
      *
      * @param  string|null  $type
