@@ -63,7 +63,7 @@ trait ManagesPaymentMethods
             return false;
         }
 
-        return $this->resolveStripePaymentMethod($paymentMethod->id) === null;
+        return $this->resolveStripePaymentMethod($paymentMethod->id) !== null;
     }
 
     /**
